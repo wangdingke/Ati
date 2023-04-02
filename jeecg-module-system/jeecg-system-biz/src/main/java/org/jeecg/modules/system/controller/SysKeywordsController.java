@@ -31,6 +31,7 @@ import java.util.Date;
 @RequestMapping("/sys/keywords")
 @Api(tags="关键词")
 public class SysKeywordsController {
+
     @Autowired
     SysDictMapper sysDictMapper;
 
