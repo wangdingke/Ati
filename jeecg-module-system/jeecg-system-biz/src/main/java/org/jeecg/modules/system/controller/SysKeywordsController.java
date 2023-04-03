@@ -63,7 +63,8 @@ public class SysKeywordsController {
     public Result<IPage<SysKeywords>> queryAllPageList(SysKeywords sysKeywords, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo,
                                                    @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize, HttpServletRequest req) {
         LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
-        sysKeywords.setUserId(sysUser.getUsername());
+        //sysKeywords.setUserId(sysUser.getUsername());
+        sysKeywords.setKeywordsStatus("4");
         log.info("当前用户是:{}",sysUser.getUsername());
         QueryWrapper<SysKeywords> queryWrapper = QueryGenerator.initQueryWrapper(sysKeywords, req.getParameterMap());
         return sysKeywordsService.queryPageList(req, queryWrapper, pageSize, pageNo);
@@ -111,6 +112,7 @@ public class SysKeywordsController {
         Result<SysKeywords> result = new Result<SysKeywords>();
         try {
             sysKeywords.setCreateTime(new Date());
+            sysKeywords.setKeywordsStatus("0");
             sysKeywordsMapper.insert(sysKeywords);
             result.success("添加成功！");
         } catch (Exception e) {

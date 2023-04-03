@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.jeecg.common.aspect.annotation.Dict;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -48,6 +49,7 @@ public class SysKeywords implements Serializable {
     /**
      * 关键字状态（0 待审核 1审核通过 2审核拒绝 4上架 5下架）
      */
+    @Dict(dicCode = "keywords_status")
     private String keywordsStatus;
 
     /**
@@ -76,6 +78,11 @@ public class SysKeywords implements Serializable {
      * 关键字图片存放地址
      */
     private String keywordsFilePath;
+
+    /**
+     * 关键字标题
+     */
+    private String keywordsTittle;
 
     /**
      * 创建人
